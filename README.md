@@ -5,6 +5,7 @@
     argparser_demo.py
     uptime.py
     sysinfo.py
+    date.py
 
 include this line to be able to execute the script
 
