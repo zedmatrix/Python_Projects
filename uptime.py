@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 import psutil
 from time import time
 from datetime import datetime, timedelta
