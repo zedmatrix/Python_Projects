@@ -43,12 +43,12 @@ elif args.doc:
 
 else:
     print("Usage:")
-    print("  calc   Start LibreCalc")
-    print("  write  Start LibreWriter")
-    print("  web    Start LibreWeb")
+    print("  --calc   Start LibreCalc")
+    print("  --write  Start LibreWriter")
+    print("  --web    Start LibreWeb")
     print("  --doc <filename>   Open a specific document")
 
-""" --writer            Creates an empty Writer document.
+"""--writer            Creates an empty Writer document.
    --calc              Creates an empty Calc document.
    --draw              Creates an empty Draw document.
    --impress           Creates an empty Impress document.
