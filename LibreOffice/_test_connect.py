@@ -9,7 +9,7 @@ if __name__ == "__main__":
         exit(1)
 
     services = document.getSupportedServiceNames()
-    print(f"Connect to Supported services: {services}")
+    print(f"Connected to Supported services: {services}")
 
     # Determine the type of the connected document
     if document.supportsService("com.sun.star.sheet.SpreadsheetDocument"):
