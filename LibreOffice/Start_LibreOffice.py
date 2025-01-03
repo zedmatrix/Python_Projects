@@ -15,44 +15,66 @@ def open_office(option, document=None):
     except FileNotFoundError:
         print("The 'libreoffice' command was not found on this system.")
 
-parser = argparse.ArgumentParser(description="Start LibreOffice Interface")
-group = parser.add_mutually_exclusive_group(required=True)
-group.add_argument("--calc", action="store_true", help="Start LibreCalc")
-group.add_argument("--write", action="store_true", help="Start LibreWriter")
-group.add_argument("--web", action="store_true", help="Start LibreHTML Writer")
-parser.add_argument("--doc", type=str, help="Open a specific document")
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description="Start LibreOffice Interface")
+    group = parser.add_mutually_exclusive_group(required=True)
+    group.add_argument("--calc", action="store_true", help="Start LibreCalc")
+    group.add_argument("--write", action="store_true", help="Start LibreWriter")
+    group.add_argument("--web", action="store_true", help="Start LibreHTML Writer")
+    group.add_argument("--draw", action="store_true", help="Start LibreDraw")
+    group.add_argument("--impress", action="store_true", help="Start LibreMath")
+    group.add_argument("--math", action="store_true", help="Start LibreMath")
+    parser.add_argument("--doc", type=str, help="Open a specific document")
 
-args = parser.parse_args()
-print(args)
+    args = parser.parse_args()
+    print(args)
 
-if args.calc:
-    print("Starting LibreCalc...")
-    open_office("--calc")
+    if args.calc:
+        print("Starting Libre Calc Spreadsheet")
+        open_office("--calc")
 
-elif args.write:
-    print("Starting LibreWriter...")
-    open_office("--writer")
+    elif args.write:
+        print("Starting Libre Writer Document")
+        open_office("--writer")
 
-elif args.web:
-    print("Starting LibreWeb...")
-    open_office("--web")
+    elif args.web:
+        print("Starting Libre Web HTML Document")
+        open_office("--web")
 
-elif args.doc:
-    print(f"Opening document: {args.doc}")
-    open_office("", document=args.doc)
+    elif args.draw:
+        print("Starting Libre Draw")
+        open_office("--draw")
 
-else:
-    print("Usage:")
-    print("  --calc   Start LibreCalc")
-    print("  --write  Start LibreWriter")
-    print("  --web    Start LibreWeb")
-    print("  --doc <filename>   Open a specific document")
+    elif args.impress:
+        print("Starting Libre Presentation")
+        open_office("--impress")
 
-"""--writer            Creates an empty Writer document.
-   --calc              Creates an empty Calc document.
-   --draw              Creates an empty Draw document.
-   --impress           Creates an empty Impress document.
-   --base              Creates a new database.
-   --global            Creates an empty Writer master (global) document.
-   --math              Creates an empty Math document (formula).
-   --web               Creates an empty HTML document."""
+    elif args.math:
+        print("Starting Math Document")
+        open_office("--math")
+
+    elif args.doc:
+        print(f"Opening document: {args.doc}")
+        open_office("", document=args.doc)
+
+    else:
+        print("Usage:")
+        print("  --calc    Start Libre Calc")
+        print("  --write   Start Libre Writer")
+        print("  --web     Start Libre Web")
+        print("  --draw    Start Libre Draw")
+        print("  --impress Start Libre Presentation")
+        print("  --math    Start Libre Math Document")
+        
+        print("  --doc <filename>   Open a specific document")
+
+"""
+ --writer            Creates an empty Writer document.
+ --calc              Creates an empty Calc document.
+ --draw              Creates an empty Draw document.
+ --impress           Creates an empty Impress document.
+ --base              Creates a new database.
+ --global            Creates an empty Writer master (global) document.
+ --math              Creates an empty Math document (formula).
+ --web               Creates an empty HTML document.
+"""
