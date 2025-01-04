@@ -28,7 +28,7 @@ def WritePodcast(FIND: str, REPLACE: str, save_dir, latest):
         new_title = title.replace(FIND, REPLACE)
         media = latest["media_content"]
         url = media[0]['url']
-        outdir = f"$HOME/Videos/Youtube/Podcasts/{save_dir}"
+        outdir = f"$HOME/Podcasts/{save_dir}"
         outfile = f'yt-dlp {url} \\\n-P {outdir} \\\n-o "{new_title}.mp4"'
         with open('youtube.sh', "a") as myfile:
             myfile.write(f"[ ! -d {outdir} ] && mkdir -v {outdir}\n")
