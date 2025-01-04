@@ -1,5 +1,5 @@
 """
-    My Feed Parser for Podcaster module
+    Feed Parser for Podcaster module
 """
 
 import feedparser
