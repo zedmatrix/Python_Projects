@@ -3,21 +3,10 @@ Initialization module for the LibreOffice project.
 Contains constants, essential imports, and the connection function for LibreOffice.
 """
 
-from sheet_class import CellFormatter, CellContent
+from cell_class import CellFormatter, CellContent, GetCell, GetCellByRange
+from cell_functions import MergeCells
 from border_class import Border
 from typing import Final
-
-# Letter to Column Index
-def letter_col(column: str) -> int:
-    return ord(column.upper()) - ord('A')
-
-# Merge Cells
-def MergeCells(sheet, col_left: str, start_row, col_right: str, end_row):
-    start_col = letter_col(col_left)
-    end_col = letter_col(col_right)
-    cell_range = sheet.getCellRangeByPosition(start_col, start_row, end_col, end_row)
-    cell_range.merge(False)
-    cell_range.merge(True)
 
 # Header Constants
 months = [ "January", "February", "March", "April", "May", "June", "July",
@@ -34,5 +23,5 @@ black: Final[int] = 0x000000
 bright_orange: Final[int] = 0xf97f05
 light_cyan: Final[int] = 0xc6e6e6
 
-__all__ = ['months', 'CellFormatter', 'CellContent', 'letter_col', 'MergeCells', 'Border',
+__all__ = ['months', 'CellFormatter', 'CellContent', 'letter_col', 'MergeCells', 'Border', 'GetCell', 'GetCellByRange',
            'dark_green', 'light_green', 'dark_red', 'light_red', 'light_grey', 'white', 'black', 'bright_orange', 'light_cyan']
