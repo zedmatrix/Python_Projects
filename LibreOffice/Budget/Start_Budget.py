@@ -41,14 +41,3 @@ if __name__ == "__main__":
 
     services = document.getSupportedServiceNames()
     print(f"Connected to Supported services: {services}")
-
-    # DocumentInfo["author"] = "Travis Tucker"
-    # DocumentInfo["title"] = "Yearly Budget for 2025"
-    # DocumentInfo["subject"] = "Yearly Budget"
-    # DocumentInfo["comment"] = "Travis' Yearly Budget for 2025"
-    #
-    # set_document_info(document, DocumentInfo)
-
-    get_document_info(document, DocumentInfo)
-
-    print(DocumentInfo.get_values())
