@@ -9,8 +9,45 @@
         formatter = CellFormatter(justify="LT", fore_color=0xFF0000, back_color=0xFFFF00)
         formatter.apply_format(cell)
 
+        Example:
+        getCell = GetCell(sheet)
+        cell = get('A', 1)
+        cell = get('B', 9)
+
+        getRange = GetCellByRange(sheet)
+
+        # Retrieve a range of cells (e.g., A1 to C3)
+        cell_range = getRange.get('A', 1, 'C', 3)
 """
 import uno
+
+class GetCell:
+    def __init__(self, sheet):
+        self.sheet = sheet
+
+    def get(self, column: str, row: int):
+        """
+        Fetch a cell object using column (A-Z) and row (1-based).
+        """
+        # Convert column letter to a zero-based index
+        column_index = ord(column.upper()) - ord('A')
+        row_index = row - 1
+        return self.sheet.getCellByPosition(column_index, row_index)
+
+class GetCellByRange:
+    def __init__(self, sheet):
+        self.sheet = sheet
+
+    def get(self, top: str, left: int, bottom: str, right: int):
+        """
+        Fetch a cell object using column (A-Z) and row (1-based).
+        """
+        # Convert column letter to a zero-based index
+        top_index = ord(top.upper()) - ord('A')
+        left_index = left - 1
+        bottom_index = ord(bottom.upper()) - ord('A')
+        right_index = right - 1
+        return self.sheet.getCellRangeByPosition(top_index, left_index, bottom_index, right_index)
 
 class CellFormatter:
     def __init__(self, font="Verdana", size=16, bold=True, fore_color=0x000000, back_color=0xFFFFFF, justify="CC"):
