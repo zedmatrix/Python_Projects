@@ -17,17 +17,20 @@ def open_office(option, document=None):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Start LibreOffice Interface")
-    group = parser.add_mutually_exclusive_group(required=True)
+    parser.add_argument("--doc", type=str, help="Open a specific document")
+    group = parser.add_mutually_exclusive_group(required=False)
     group.add_argument("--calc", action="store_true", help="Start LibreCalc")
     group.add_argument("--write", action="store_true", help="Start LibreWriter")
     group.add_argument("--web", action="store_true", help="Start LibreHTML Writer")
     group.add_argument("--draw", action="store_true", help="Start LibreDraw")
     group.add_argument("--impress", action="store_true", help="Start LibreMath")
     group.add_argument("--math", action="store_true", help="Start LibreMath")
-    parser.add_argument("--doc", type=str, help="Open a specific document")
 
     args = parser.parse_args()
     print(args)
+    if args.doc:
+        print(f"Opening document: {args.doc}")
+        open_office("", document=args.doc)
 
     if args.calc:
         print("Starting Libre Calc Spreadsheet")
@@ -53,19 +56,11 @@ if __name__ == "__main__":
         print("Starting Math Document")
         open_office("--math")
 
-    elif args.doc:
-        print(f"Opening document: {args.doc}")
-        open_office("", document=args.doc)
-
     else:
         print("Usage:")
-        print("  --calc    Start Libre Calc")
-        print("  --write   Start Libre Writer")
-        print("  --web     Start Libre Web")
-        print("  --draw    Start Libre Draw")
-        print("  --impress Start Libre Presentation")
-        print("  --math    Start Libre Math Document")
-        
+        print("  --calc   Start LibreCalc")
+        print("  --write  Start LibreWriter")
+        print("  --web    Start LibreWeb")
         print("  --doc <filename>   Open a specific document")
 
 """

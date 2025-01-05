@@ -4,8 +4,9 @@ Contains constants, essential imports, and the connection function for LibreOffi
 """
 
 import uno
-from com.sun.star.table import BorderLine
-from connect_libre import connect_libre
+from LibreOffice.connect_libre import connect_libre
+from LibreOffice.document_info import set_document_info, get_document_info
+from LibreOffice.document_class import MyDocClass
 from typing import Final
 
 # Color constants
@@ -19,5 +20,5 @@ black: Final[int] = 0x000000
 bright_orange: Final[int] = 0xf97f05
 light_cyan: Final[int] = 0xc6e6e6
 
-__all__ = ['connect_libre', 'dark_green', 'light_green', 'dark_red', 'light_red',
-           'light_grey', 'white', 'black', 'bright_orange', 'light_cyan']
+__all__ = ['connect_libre', 'set_document_info', 'get_document_info', 'MyDocClass',
+           'dark_green', 'light_green', 'dark_red', 'light_red', 'light_grey', 'white', 'black', 'bright_orange', 'light_cyan']
