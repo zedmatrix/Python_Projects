@@ -3,9 +3,36 @@ Initialization module for the LibreOffice project.
 Contains constants, essential imports, and the connection function for LibreOffice.
 """
 
+from sheet_class import CellFormatter, CellContent
+from border_class import Border
+from typing import Final
+
+# Letter to Column Index
+def letter_col(column: str) -> int:
+    return ord(column.upper()) - ord('A')
+
+# Merge Cells
+def MergeCells(sheet, col_left: str, start_row, col_right: str, end_row):
+    start_col = letter_col(col_left)
+    end_col = letter_col(col_right)
+    cell_range = sheet.getCellRangeByPosition(start_col, start_row, end_col, end_row)
+    cell_range.merge(False)
+    cell_range.merge(True)
+
 # Header Constants
 months = [ "January", "February", "March", "April", "May", "June", "July",
           "August", "September", "October", "November", "December" ]
 
+# Color constants
+dark_green: Final[int] = 0xa0d5a0
+light_green: Final[int] = 0x97ff97
+dark_red: Final[int] = 0xb60000
+light_red: Final[int] = 0xffa2a2
+light_grey: Final[int] = 0xeeeeee
+white: Final[int] = 0xffffff
+black: Final[int] = 0x000000
+bright_orange: Final[int] = 0xf97f05
+light_cyan: Final[int] = 0xc6e6e6
 
-__all__ = ['months']
+__all__ = ['months', 'CellFormatter', 'CellContent', 'letter_col', 'MergeCells', 'Border',
+           'dark_green', 'light_green', 'dark_red', 'light_red', 'light_grey', 'white', 'black', 'bright_orange', 'light_cyan']
