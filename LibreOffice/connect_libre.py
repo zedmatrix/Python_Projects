@@ -9,15 +9,8 @@ Example:
     if isinstance(document, Exception):
         print(f"Error: Cannot connect to LibreOffice. {document}")
         exit(1)
-
-    if document.supportsService("com.sun.star.sheet.SpreadsheetDocument"):
-        print("Connected to a Calc spreadsheet.")
-    elif document.supportsService("com.sun.star.text.TextDocument"):
-        print("Connected to a Writer document.")
-    elif document.supportsService("com.sun.star.presentation.PresentationDocument"):
-        print("Connected to an Impress presentation.")
-    else:
-        print("Connected to an unsupported document type.")
+    services = document.getSupportedServiceNames()
+    print(f"Connected to Supported services: {services}")
 """
 
 import uno
