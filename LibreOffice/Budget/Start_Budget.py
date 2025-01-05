@@ -9,8 +9,31 @@ from LibreOffice.document_class import MyDocClass
 from unohelper import systemPathToFileUrl
 import uno
 import os
+import subprocess
+
+def open_office(option, document=None):
+    try:
+        command = f"libreoffice {option} --accept=\"socket,host=localhost,port=2002;urp;\""
+        if document:
+            command += f" \"{document}\""
+        print(f"Running command: {command}")
+        subprocess.run(command, check=True, text=True, shell=True)
+
+    except subprocess.CalledProcessError as e:
+        print(f"Command failed with return code {e.returncode}")
+        print(f"Error output:\n{e.stderr}")
+    except FileNotFoundError:
+        print("The 'libreoffice' command was not found on this system.")
 
 if __name__ == "__main__":
+    DocumentInfo = MyDocClass()
+    DocumentInfo["file_name"] = "myBudget_2025.ods"
+    DocumentInfo["file_path"] = os.path.expandvars("$HOME/Documents")
+    file_path = os.path.expandvars(os.path.join(DocumentInfo["file_path"], DocumentInfo["file_name"]))
+    DocumentInfo["file_url"] = systemPathToFileUrl(file_path)
+
+    open_office('--calc', DocumentInfo["file_url"])
+
     document = connect_libre()
     if isinstance(document, Exception):
         print(f"Error: Cannot connect to LibreOffice. {document}")
@@ -19,18 +42,12 @@ if __name__ == "__main__":
     services = document.getSupportedServiceNames()
     print(f"Connected to Supported services: {services}")
 
-    DocumentInfo = MyDocClass()
-    DocumentInfo["author"] = "<your name here>"
-    DocumentInfo["title"] = "<title for document>"
-    DocumentInfo["subject"] = "<subject>"
-    DocumentInfo["comment"] = "<description shows up as Comment>"
-    DocumentInfo["file_name"] = "<your filename>"
-    DocumentInfo["file_path"] = "$HOME/Documents"
-
-    file_path = os.path.expandvars(os.path.join(DocumentInfo["file_path"], DocumentInfo["file_name"]))
-    DocumentInfo["file_url"] = systemPathToFileUrl(file_path)
-
-    set_document_info(document, DocumentInfo)
+    # DocumentInfo["author"] = "Travis Tucker"
+    # DocumentInfo["title"] = "Yearly Budget for 2025"
+    # DocumentInfo["subject"] = "Yearly Budget"
+    # DocumentInfo["comment"] = "Travis' Yearly Budget for 2025"
+    #
+    # set_document_info(document, DocumentInfo)
 
     get_document_info(document, DocumentInfo)
 
