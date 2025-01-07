@@ -26,6 +26,6 @@ def parse_arguments():
     parser.add_argument(
         '-i','--index',
         type=int, default=0,
-        help="Optional Podcast Entry Index Number."
+        help="Optional Index Number. Default=0 latest."
     )
     return parser.parse_args()
