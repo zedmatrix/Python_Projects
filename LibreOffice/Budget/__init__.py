@@ -4,7 +4,8 @@ Contains constants, essential imports, and the connection function for LibreOffi
 """
 
 from cell_class import CellFormatter, CellContent, GetCell, GetCellByRange
-from cell_functions import MergeCells
+from cell_functions import MergeCells, CellHeight, CellWidth
+from sheet_functions import create_sheet, remove_sheet
 from border_class import Border
 from typing import Final
 
@@ -24,4 +25,5 @@ bright_orange: Final[int] = 0xf97f05
 light_cyan: Final[int] = 0xc6e6e6
 
 __all__ = ['months', 'CellFormatter', 'CellContent', 'letter_col', 'MergeCells', 'Border', 'GetCell', 'GetCellByRange',
+           'CellHeight', 'CellWidth',
            'dark_green', 'light_green', 'dark_red', 'light_red', 'light_grey', 'white', 'black', 'bright_orange', 'light_cyan']
