@@ -2,28 +2,17 @@
 """
     LibreOffice - Python Interface
         Document-Calc Creator
+        This Will Have a Debug Terminal from LibreOffice until closed
+
 """
-from LibreOffice.connect_libre import connect_libre
+
+from LibreOffice.connect_libre import connect_libre, open_office
 from LibreOffice.document_info import set_document_info, get_document_info
 from LibreOffice.document_class import MyDocClass
 from unohelper import systemPathToFileUrl
 import uno
 import os
 import subprocess
-
-def open_office(option, document=None):
-    try:
-        command = f"libreoffice {option} --accept=\"socket,host=localhost,port=2002;urp;\""
-        if document:
-            command += f" \"{document}\""
-        print(f"Running command: {command}")
-        subprocess.run(command, check=True, text=True, shell=True)
-
-    except subprocess.CalledProcessError as e:
-        print(f"Command failed with return code {e.returncode}")
-        print(f"Error output:\n{e.stderr}")
-    except FileNotFoundError:
-        print("The 'libreoffice' command was not found on this system.")
 
 if __name__ == "__main__":
     DocumentInfo = MyDocClass()
