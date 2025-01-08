@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 """
+
     LibreOffice - Python Interface
         Document-Calc Creator
         This Will Have a Debug Terminal from LibreOffice until closed
@@ -7,12 +8,10 @@
 """
 
 from LibreOffice.connect_libre import connect_libre, open_office
-from LibreOffice.document_info import set_document_info, get_document_info
 from LibreOffice.document_class import MyDocClass
 from unohelper import systemPathToFileUrl
 import uno
 import os
-import subprocess
 
 if __name__ == "__main__":
     DocumentInfo = MyDocClass()

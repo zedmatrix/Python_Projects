@@ -1,3 +1,11 @@
+"""
+    Create a Border Around Cell or Cell Range
+
+    border = Border(color=dark_green, width=20, vline=0, hline=0)
+    border.create_border(cell)
+
+"""
+
 import uno
 from com.sun.star.table import BorderLine
 

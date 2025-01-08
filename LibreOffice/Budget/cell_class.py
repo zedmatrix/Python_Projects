@@ -1,6 +1,7 @@
 """
         Example usage:
-        cell = sheet.getCellByPosition(col, row)
+        getCell = GetCell(sheet)
+        cell = getCell.get('A', 1)
         # Set content
         content = CellContent(text="Hello, World!", formula=False)
         content.set_content(cell)
@@ -11,8 +12,8 @@
 
         Example:
         getCell = GetCell(sheet)
-        cell = get('A', 1)
-        cell = get('B', 9)
+        cell = getCell.get('A', 1)
+        cell = getCell.get('B', 9)
 
         getRange = GetCellByRange(sheet)
 
@@ -20,6 +21,7 @@
         cell_range = getRange.get('A', 1, 'C', 3)
 """
 import uno
+from LibreOffice.color_data import white, black
 
 class GetCell:
     def __init__(self, sheet):
@@ -50,7 +52,7 @@ class GetCellByRange:
         return self.sheet.getCellRangeByPosition(top_index, left_index, bottom_index, right_index)
 
 class CellFormatter:
-    def __init__(self, font="Verdana", size=16, bold=True, fore_color=0x000000, back_color=0xFFFFFF, justify="CC"):
+    def __init__(self, font="Verdana", size=16, bold=True, fore_color=black, back_color=white, justify="CC"):
         self.font = font
         self.size = size
         self.weight = 150 if bold else 100

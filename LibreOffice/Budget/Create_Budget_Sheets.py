@@ -4,6 +4,7 @@
         Document-Calc Creator
 """
 from LibreOffice.connect_libre import connect_libre
+from LibreOffice.sheet_functions import create_sheet
 from LibreOffice.color_data import *
 from LibreOffice.Budget.table_function import create_table
 from LibreOffice.Budget.budget_data import (
@@ -23,16 +24,23 @@ if __name__ == "__main__":
     services = document.getSupportedServiceNames()
     print(f"Connected to Supported services: {services}")
 
-    #month = months.index('January')
-    #month = months.index('February')
-    month = months.index('March')
-    for month in months:
-        if month == 'January' or month == 'February' or month == 'March':
-            continue
+    for index, month in enumerate(months):
+        if month not in document.Sheets:
+            create_sheet(document, month, index)
+            print(f" Created sheet: {month}")
+        else
+            print(f" Skipping {month} ")
 
-        print(f'Updating Sheet {month}')
+    for month in months:
+
+        print(f" Updating Sheet {month} ")
         sheet = document.Sheets[month]
         MergeCells(sheet, 'A', 1, 'N', 1)
+        getCell = GetCell(sheet)
+        cell = getCell.get('A', 1)
+
+        content = CellContent(text=f"{month} 2025 Monthly Summary", formula=False)
+        content.set_content(cell)
 
         create_table(sheet, budget_summary, 'A', 3)
         create_table(sheet, income_summary, 'A', 8)
