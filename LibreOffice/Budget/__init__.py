@@ -8,5 +8,5 @@ from cell_functions import MergeCells, CellHeight, CellWidth
 from sheet_functions import create_sheet, remove_sheet
 from border_class import Border
 
-__all__ = ['CellFormatter', 'CellContent', 'letter_col', 'MergeCells', 'Border',
+__all__ = ['CellFormatter', 'CellContent', 'MergeCells', 'Border',
            'GetCell', 'GetCellByRange', 'CellHeight', 'CellWidth']
