@@ -1,8 +1,8 @@
 """
 Usage:
-    Initialize pointer: getCell = GetCell(sheet)
-                        cell = getCell('C', 3) or
-                        cell_range = getCell("B", 2, getrange=True, nRight="D", nBottom=5)
+    Initialize pointer: get_cell = GetCell(sheet)
+                        cell = get_cell('C', 3) or
+                        cell_range = get_cell("B", 2, getrange=True, nRight="D", nBottom=5)
 
 Parameters
     nLeft	is the column index of the first cell inside the range.
