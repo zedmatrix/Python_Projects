@@ -27,7 +27,7 @@ class GetCell:
     def __init__(self, sheet):
         self.sheet = sheet
 
-    def __call__(self, nLeft: str, nTop: int, getrange: False, nRight=None, nBottom=None):
+    def __call__(self, nLeft: str, nTop: int, nRight=None, nBottom=None, getrange=False):
         # Convert column letter to a zero-based index
         left_column = ord(nLeft.upper()) - ord('A')
         top_index = nTop - 1
